@@ -1,6 +1,6 @@
---- Write a SQL script that creates a table users
---- with the following columns:
---- id, email, name
+-- Write a SQL script that creates a table users
+-- with the following columns:
+-- id, email, name
 
 CREATE TABLE IF NOT EXISTS users (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
