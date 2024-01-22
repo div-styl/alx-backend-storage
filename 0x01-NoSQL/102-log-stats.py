@@ -14,7 +14,8 @@ if __name__ == "__main__":
     for method in methods:
         cnt = ngix_c.count_documents({'method': method})
         print(f'\tmethod {method}: {cnt}')
-    status_check = nginx_c.count_documents({'method': 'GET', 'path': '/status'})
+    status_check = nginx_c.count_documents({'method': 'GET',
+                                            'path': '/status'})
     print(f'{status_check} status check')
 
     top_ip = ngix_c.aggregate([
