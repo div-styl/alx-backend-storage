@@ -5,7 +5,7 @@ model for using redis NoSQL
 import redis
 import uuid
 from functools import wraps
-from typing import Union, Callable, Any
+from typing import Any, Union, Callable
 
 
 def count_calls(method: Callable) -> Callable:
@@ -66,7 +66,10 @@ def reply(fn: Callable) -> None:
     inputs = redit_store.lrange(in_key, 0, -1)
     outputs = redit_store.lrange(out_key, 0, -1)
     for fn_inputs, fn_output in zip(inputs, outputs):
-        print("{}(*{}) -> {}".format(fn_name, fn_inputs.decode("utf-8"), fn_output))
+        print("{}(*{}) -> {}".format(
+            fn_name,
+            fn_inputs.decode("utf-8"),
+              fn_output))
 
 
 class Cache:
@@ -81,7 +84,9 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb(True)
 
-    def get(self, key: str, fn: Callable = None) -> Union[str, bytes, int, float]:
+    def get(
+            self, key: str,
+            fn: Callable = None) -> Union[str, bytes, int, float]:
         """
         get
         """
